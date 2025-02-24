@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Ingredients</title>
+</head>
+<body>
+<h1>Ingredients</h1>
+<a th:href="@{/ingredients/new}">Add New Ingredient</a>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Image</th>
+    <th>Actions</th>
+  </tr>
+  <tr th:each="ingredient : ${ingredients}">
+    <td th:text="${ingredient.name}">Ingredient Name</td>
+    <td><img th:src="${ingredient.imageUrl}" alt="Ingredient Image"/></td>
+    <td>
+      <a th:href="@{/ingredients/{id}(id=${ingredient.id})}">View</a>
+      <a th:href="@{/ingredients/{id}/edit(id=${ingredient.id})}">Edit</a>
+      <form th:action="@{/ingredients/{id}/delete(id=${ingredient.id})}" method="post">
+        <button type="submit">Delete</button>
+      </form>
+    </td>
+  </tr>
+</table>
+</body>
+</html>

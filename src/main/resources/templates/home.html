@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Home Page</title>
+  <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+</head>
+<body>
+<div class="container">
+  <h1>Welcome to the Pizza Ordering System</h1>
+  <p>This is the home page of our application.</p>
+  <div class="row">
+    <div class="col-md-6">
+      <h2>Login</h2>
+      <form th:action="@{/login}" method="post">
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input type="text" id="username" name="username" class="form-control" required />
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" class="form-control" required />
+        </div>
+        <button type="submit" class="btn btn-primary">Login</button>
+      </form>
+      <div th:if="${error}" class="alert alert-danger mt-3" role="alert">
+        <p th:text="${error}"></p>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <h2>New User?</h2>
+      <p>If you don't have an account, please register:</p>
+      <a th:href="@{/users/register}" class="btn btn-secondary">Register</a>
+    </div>
+  </div>
+</div>
+</body>
+</html>

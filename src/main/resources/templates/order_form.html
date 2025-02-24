@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Create Order</title>
+  <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+</head>
+<body>
+<div class="container">
+  <h1>Create New Order</h1>
+  <form th:action="@{'/orders/new/' + ${userId}}" th:object="${order}" method="post">
+    <!-- Add form fields for order details as needed -->
+    <button type="submit" class="btn btn-primary">Submit Order</button>
+  </form>
+</div>
+</body>
+</html>

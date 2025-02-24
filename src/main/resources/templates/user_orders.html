@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>My Orders</title>
+  <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+</head>
+<body>
+<div class="container">
+  <h1>My Orders</h1>
+  <a th:href="@{'/orders/new/' + ${userId}}" class="btn btn-primary">New Order</a>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>Order ID</th>
+      <th>Status</th>
+      <th>Details</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="order : ${orders}">
+      <td th:text="${order.id}"></td>
+      <td th:text="${order.status}"></td>
+      <td><a th:href="@{'/orders/' + ${order.id}}">View</a></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Customize Your Pizza</title>
+</head>
+<body>
+<h1>Customize Your Pizza</h1>
+<form th:action="@{/pizza/customize}" method="post">
+  <div th:each="ingredient : ${ingredients}">
+    <input type="checkbox" th:value="${ingredient.id}" th:field="*{ingredients}" />
+    <label th:for="${ingredient.id}" th:text="${ingredient.name}"></label>
+    <img th:src="@{${ingredient.imageUrl}}" alt="ingredient image"/>
+  </div>
+  <button type="submit">Order</button>
+</form>
+</body>
+</html>
